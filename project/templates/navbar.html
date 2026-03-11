@@ -1,0 +1,162 @@
+{% load static %}
+
+
+
+<!-- Shopping Cart  -->
+  <div class="cart">
+    <div class="top_cart">
+      <h2 class="text flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-shopping-bag h-5 w-5">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+          <path d="M3 6h18"></path>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>Shopping Cart (0)
+      </h2>
+      <span onclick="open_close_cart()" class="close_cart"><i class="fa-regular fa-circle-xmark"></i></span>
+    </div>
+    <div class="items_in_cart">
+      <div class="item_cart">
+        <img src="{% static 'imges/products/Anatomy Model Set.jpg' %}" alt="">
+        <div class="content">
+          <h4>Lorem ipsum dolor sit amet elit.</h4>
+          <p class="price_cart">$80</p>
+          <div class="quantity_control">
+            <button class="decrease_quantity">-</button>
+            <span class="quantity">3</span>
+            <button class="increase_quantity">+</button>
+          </div>
+        </div>
+        <button class="delete_item"><i class="fa-solid fa-trash-can"></i></button>
+      </div>
+      <div class="item_cart">
+        <img src="./imges/products/Arduino Starter Kit.webp" alt="">
+        <div class="content">
+          <h4>Lorem ipsum dolor sit amet elit.</h4>
+          <p class="price_cart">$80</p>
+          <div class="quantity_control">
+            <button class="decrease_quantity">-</button>
+            <span class="quantity">3</span>
+            <button class="increase_quantity">+</button>
+          </div>
+        </div>
+        <button class="delete_item"><i class="fa-solid fa-trash-can"></i></button>
+      </div>
+      <div class="item_cart">
+        <img src="./imges/products/Dental Instrument Kit.jpg" alt="">
+        <div class="content">
+          <h4>Lorem ipsum dolor sit amet elit.</h4>
+          <p class="price_cart">$80</p>
+          <div class="quantity_control">
+            <button class="decrease_quantity">-</button>
+            <span class="quantity">3</span>
+            <button class="increase_quantity">+</button>
+          </div>
+        </div>
+        <button class="delete_item"><i class="fa-solid fa-trash-can"></i></button>
+      </div>
+
+    </div>
+
+    <div class="bottom_cart">
+      <div class="total">
+        <p>TOTAL</p>
+        <p class="price_cart_toral">$0</p>
+      </div>
+
+      <div class="button_cart">
+        <a href="#" class="btn_cart btn">Checkout</a>
+        <span onclick="open_close_cart()" class="btn_cart trans_bg btn">Shop More</span>
+      </div>
+    </div>
+
+
+  </div>
+  <!-- header -->
+  <header class="sticky top-0 z-50 w-full border-b bg-card">
+    <div class="container flex h-16 items-center justify-between gap-4">
+      <a class="flex items-center logo" href="#">
+        <div class="logo-box">
+          <img src="{% static 'imges/photo_٢٠٢٦-٠٢-٢٥_٠٨-٤٧-٣٧-removebg-preview.png' %}" alt="">
+        </div>
+      </a>
+     <nav class="hidden md:flex items-center gap-6">
+        <a class="text-sm font-medium text-muted-foreground" href="/college/medicine">Medicine</a>
+        <a class="text-sm font-medium text-muted-foreground" href="/college/engineering">Engineering</a>
+        <a class="text-sm font-medium text-muted-foreground" href="/college/fine-arts">Fine Arts</a>
+      </nav> 
+
+      <form class="hidden sm:flex flex-1 max-w-md mx-4">
+        <div class="relative w-full">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="absolute left-3 top-50 h-4 w-4 translate-y-minus-50 text-muted-foreground">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+          <input type="search"
+            class="flex h-10 rounded-md border-input border-0 px-3 py-2 text-base md:text-sm w-full pl-10 bg-muted-1"
+            placeholder="Search products..." value="">
+        </div>
+      </form>
+      <div class="flex items-center gap-2">
+       <!--login--> 
+       <a href="{% url 'signin' %}"
+          class="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium [&amp;_svg]:size-4 h-10 w-10 relative btn btn-outline-warning">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <circle cx="12" cy="10" r="3" />
+            <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662" />
+          </svg>
+        </a>
+
+        <button onclick="open_close_cart()"
+          class="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium [&amp;_svg]:size-4 h-10 w-10 relative btn btn-outline-warning">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="21" r="1"></circle>
+            <circle cx="19" cy="21" r="1"></circle>
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+          </svg>
+        </button>
+
+        <button id="mobile-menu-btn"
+          class="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium [&_svg]:size-4 h-10 w-10 relative md:hidden btn btn-outline-warning">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" x2="20" y1="12" y2="12"></line>
+            <line x1="4" x2="20" y1="6" y2="6"></line>
+            <line x1="4" x2="20" y1="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden border-t bg-card hidden">
+      <div class="container py-4 space-y-4">
+        <form>
+          <div class="relative">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="absolute left-3 top-50 h-4 w-4 translate-y-minus-50 text-muted-foreground">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.3-4.3"></path>
+            </svg>
+            <input type="search"
+              class="flex h-10 rounded-md border-input px-3 py-2 md:text-sm w-full pl-10 bg-muted-1 border-0"
+              placeholder="Search products..." value="">
+          </div>
+        </form>
+        <nav class="flex flex-col gap-2">
+          <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground hover:bg-muted nav"
+            href="/college/medicine"><span class="text-xl">🏥</span><span class="font-medium">Medicine</span></a>
+          <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground hover:bg-muted nav"
+            href="/college/engineering"><span class="text-xl">⚙️</span><span class="font-medium">Engineering</span></a>
+          <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground hover:bg-muted nav"
+            href="/college/fine-arts"><span class="text-xl">🎨</span><span class="font-medium">Fine Arts</span></a>
+        </nav>
+      </div>
+    </div>
+  </header> 
