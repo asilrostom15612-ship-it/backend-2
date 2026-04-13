@@ -1,33 +1,27 @@
- {% load static %} 
+{% load static %}
 {% include 'navbar.html' %}
 
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UNILAB MARKET</title>
-
+  <title>UNI-LAB MARKET</title>
   <!-- Bootstrap 5 -->
-  
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Google Fonts: Inter -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
   <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <!-- CSS -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/ss.css' %}">
 </head>
-
 <body>
-
-  <!-- Shopping Cart 
+  <!-- Shopping Cart  -->
   <div class="cart">
     <div class="top_cart">
       <h2 class="text flex items-center gap-2">
@@ -37,81 +31,42 @@
           <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
           <path d="M3 6h18"></path>
           <path d="M16 10a4 4 0 0 1-8 0"></path>
-        </svg>Shopping Cart (0)
+        </svg>Shopping Cart
+        <span class="cart-count">(0)</span>
       </h2>
-      <span onclick="open_close_cart()" class="close_cart"><i class="fa-regular fa-circle-xmark"></i></span>
+      <span onclick="open_close_cart()" class="close_cart">
+        <i class="fa-regular fa-circle-xmark"></i>
+      </span>
     </div>
     <div class="items_in_cart">
-      <div class="item_cart">
-        <img src="{% static 'imges/products/Anatomy Model Set.jpg' %}" alt="">
-        <div class="content">
-          <h4>Lorem ipsum dolor sit amet elit.</h4>
-          <p class="price_cart">$80</p>
-          <div class="quantity_control">
-            <button class="decrease_quantity">-</button>
-            <span class="quantity">3</span>
-            <button class="increase_quantity">+</button>
-          </div>
-        </div>
-        <button class="delete_item"><i class="fa-solid fa-trash-can"></i></button>
-      </div>
-      <div class="item_cart">
-        <img src="./imges/products/Arduino Starter Kit.webp" alt="">
-        <div class="content">
-          <h4>Lorem ipsum dolor sit amet elit.</h4>
-          <p class="price_cart">$80</p>
-          <div class="quantity_control">
-            <button class="decrease_quantity">-</button>
-            <span class="quantity">3</span>
-            <button class="increase_quantity">+</button>
-          </div>
-        </div>
-        <button class="delete_item"><i class="fa-solid fa-trash-can"></i></button>
-      </div>
-      <div class="item_cart">
-        <img src="./imges/products/Dental Instrument Kit.jpg" alt="">
-        <div class="content">
-          <h4>Lorem ipsum dolor sit amet elit.</h4>
-          <p class="price_cart">$80</p>
-          <div class="quantity_control">
-            <button class="decrease_quantity">-</button>
-            <span class="quantity">3</span>
-            <button class="increase_quantity">+</button>
-          </div>
-        </div>
-        <button class="delete_item"><i class="fa-solid fa-trash-can"></i></button>
-      </div>
-
     </div>
-
     <div class="bottom_cart">
       <div class="total">
         <p>TOTAL</p>
         <p class="price_cart_toral">$0</p>
       </div>
-
       <div class="button_cart">
-        <a href="#" class="btn_cart btn">Checkout</a>
+        <a href="./Checkout.html" class="btn_cart btn">Checkout</a>
         <span onclick="open_close_cart()" class="btn_cart trans_bg btn">Shop More</span>
       </div>
     </div>
-
-
   </div>
-  <! header 
+  <!-- header 
   <header class="sticky top-0 z-50 w-full border-b bg-card">
+    <!- container - header ->
     <div class="container flex h-16 items-center justify-between gap-4">
-      <a class="flex items-center logo" href="#">
+      <a class="flex items-center logo" href="./index.html">
         <div class="logo-box">
-          <img src="{% static 'imges/photo_٢٠٢٦-٠٢-٢٥_٠٨-٤٧-٣٧-removebg-preview.png' %}" alt="">
+          <img src="./imges/photo_٢٠٢٦-٠٢-٢٥_٠٨-٤٧-٣٧-removebg-preview.png" alt="">
         </div>
       </a>
-     <nav class="hidden md:flex items-center gap-6">
-        <a class="text-sm font-medium text-muted-foreground" href="/college/medicine">Medicine</a>
-        <a class="text-sm font-medium text-muted-foreground" href="/college/engineering">Engineering</a>
-        <a class="text-sm font-medium text-muted-foreground" href="/college/fine-arts">Fine Arts</a>
-      </nav> 
-
+      <!- nav ->
+      <nav class="hidden md:flex items-center gap-6">
+        <a class="text-sm font-medium text-muted-foreground" href="./Medicine.html">Medicine</a>
+        <a class="text-sm font-medium text-muted-foreground" href="./Engineering.html">Engineering</a>
+        <a class="text-sm font-medium text-muted-foreground" href="./Fine art.html">Fine Arts</a>
+      </nav>
+      <!- Search ->
       <form class="hidden sm:flex flex-1 max-w-md mx-4">
         <div class="relative w-full">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -125,17 +80,18 @@
             placeholder="Search products..." value="">
         </div>
       </form>
+      <!- icon ->
       <div class="flex items-center gap-2">
-       <!login <button
+        <a href="./Sign-in.html" id="loginBtn"
           class="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium [&amp;_svg]:size-4 h-10 w-10 relative btn btn-outline-warning">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10" />
             <circle cx="12" cy="10" r="3" />
             <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662" />
+            
           </svg>
-        </button>
-
+        </a>
         <button onclick="open_close_cart()"
           class="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium [&amp;_svg]:size-4 h-10 w-10 relative btn btn-outline-warning">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -145,7 +101,6 @@
             <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
           </svg>
         </button>
-
         <button id="mobile-menu-btn"
           class="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium [&_svg]:size-4 h-10 w-10 relative md:hidden btn btn-outline-warning">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -157,9 +112,10 @@
         </button>
       </div>
     </div>
-
+    <!- menu ->
     <div id="mobile-menu" class="md:hidden border-t bg-card hidden">
       <div class="container py-4 space-y-4">
+        <!- Search - menu ->
         <form>
           <div class="relative">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -173,34 +129,38 @@
               placeholder="Search products..." value="">
           </div>
         </form>
+        <!- nav - menu ->
         <nav class="flex flex-col gap-2">
           <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground hover:bg-muted nav"
-            href="/college/medicine"><span class="text-xl">🏥</span><span class="font-medium">Medicine</span></a>
+            href="./Medicine.html"><span class="text-xl">🏥</span><span class="font-medium">Medicine</span></a>
           <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground hover:bg-muted nav"
-            href="/college/engineering"><span class="text-xl">⚙️</span><span class="font-medium">Engineering</span></a>
+            href="./Engineering.html"><span class="text-xl">⚙️</span><span class="font-medium">Engineering</span></a>
           <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground hover:bg-muted nav"
-            href="/college/fine-arts"><span class="text-xl">🎨</span><span class="font-medium">Fine Arts</span></a>
+            href="./Fine art.html"><span class="text-xl">🎨</span><span class="font-medium">Fine Arts</span></a>
         </nav>
       </div>
     </div>
-  </header> -->
+  </header>-->
+
+
   <!-- section - hero -->
   <section class="hero">
+    <!-- container - hero -->
     <div class="container">
       <div class="hero-content">
         <div class="trust-badge">✦ Trusted by 10,000+ students</div>
         <h1 class="text-4xl lg:text-6xl font-bold text-white leading-tight">
-          Professional Tools for <span class="text-h1">Future Professionals</span>
-
+          Professional Tools for
+          <span class="text-h1">Future Professionals</span>
         </h1>
         <p class="aa">Your one-stop shop for quality educational equipment. From medical instruments to engineering
           tools
           and art
           supplies — we've got you covered.</p>
-
+        <!-- buttons - hero -->
         <div class="buttons">
           <a class="inline-flex items-center justify-center font-medium h-11 rounded-md btn btn-warning gap-2 px-8"
-            href="/products">
+            href="./All-product.html">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
               class="lucide h-5 w-5">
@@ -211,7 +171,7 @@
             </svg>Browse All Products
           </a>
           <a class="inline-flex items-center justify-center font-medium h-11 rounded-md btn btn-outline-primary gap-2 px-8"
-            href="/college/medicine">
+            href="./Medicine.html">
             Explore Colleges
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -221,7 +181,7 @@
             </svg>
           </a>
         </div>
-
+        <!-- stats -->
         <div class="stats">
           <div class="stat-item">
             <span class="stat-number">500+</span>
@@ -237,7 +197,7 @@
           </div>
         </div>
       </div>
-
+    </div>
   </section>
   <!-- section - College -->
   <section class="py-16">
@@ -247,9 +207,9 @@
         <p class="mt-3 text-muted-foreground max-w-2xl mx-auto">Find specialized equipment for your field of
           study</p>
       </div>
-
       <div class="d-grid gap-4 gap-md-4 grid-cols-md-3">
-        <a class="card-Medicine" href="#">
+        <!-- card-Medicine -->
+        <a class="card-Medicine" href="./Medicine.html">
           <div class="h-full border-2">
             <div class="p-6 flex flex-col h-full">
               <div class="h-14 w-14 rounded-xl bg-white flex items-center justify-center mb-4">
@@ -285,8 +245,8 @@
             </div>
           </div>
         </a>
-
-        <a class="card-Engineering" href="/college/engineering">
+        <!-- card-Engineering -->
+        <a class="card-Engineering" href="./Engineering.html">
           <div class="h-full border-2">
             <div class="p-6 flex flex-col h-full">
               <div class="h-14 w-14 rounded-xl bg-white flex items-center justify-center mb-4">
@@ -316,9 +276,7 @@
                 <p class="text-xs font-medium text-muted-foreground uppercase tracking-wide">Departments</p>
                 <div class="flex flex-wrap gap-2"><span
                     class="text-xs bg-white px-2 py-1 rounded-md text-foreground">Civil Engineering</span><span
-                    class="text-xs bg-white px-2 py-1 rounded-md text-foreground">Electrical Engineering</span><span
-                    class="text-xs bg-white px-2 py-1 rounded-md text-foreground">Mechanical Engineering</span><span
-                    class="text-xs bg-white px-2 py-1 rounded-md text-foreground">Architecture</span></div>
+                    class="text-xs bg-white px-2 py-1 rounded-md text-foreground">Electrical Engineering</span></div>
               </div>
               <div class="flex items-center gap-2 text-sm font-medium">
                 <span class="tex">Explore Products</span>
@@ -332,8 +290,8 @@
             </div>
           </div>
         </a>
-
-        <a class="card-Fine" href="/college/fine-arts">
+        <!-- card-Fine -->
+        <a class="card-Fine" href="./Fine art.html">
           <div class="h-full border-2">
             <div class="p-6 flex flex-col h-full">
               <div class="h-14 w-14 rounded-xl bg-white flex items-center justify-center mb-4">
@@ -355,9 +313,7 @@
                 <p class="text-xs font-medium text-muted-foreground uppercase tracking-wide">Departments</p>
                 <div class="flex flex-wrap gap-2"><span
                     class="text-xs bg-white px-2 py-1 rounded-md text-foreground">Painting</span><span
-                    class="text-xs bg-white px-2 py-1 rounded-md text-foreground">Sculpture</span><span
-                    class="text-xs bg-white px-2 py-1 rounded-md text-foreground">Decoration</span><span
-                    class="text-xs bg-white px-2 py-1 rounded-md text-foreground">Graphic Design</span></div>
+                    class="text-xs bg-white px-2 py-1 rounded-md text-foreground">Sculpture</span></div>
               </div>
               <div class="flex items-center gap-2 text-sm font-medium">
                 <span class="tex">Explore Products</span>
@@ -374,18 +330,21 @@
       </div>
     </div>
   </section>
-   <!-- products -->
+  <!-- products -->
   <section class="products">
+    <!-- container - products -->
     <div class="container">
       <div class="section-header">
         <div>
           <h2>Top Rated Products</h2>
           <p>Highly recommended by students and professionals</p>
         </div>
-        <button class="view-products">View All Products →</button>
+        <a href="./All-product.html"><button class="view-products">View All Products →</button></a>
       </div>
+      <!-- cards -->
       <div class="cards">
-        <div class="card">
+        <!-- card -->
+        <div class="card" data-id="1">
           <span class="badge">Diagnostic Tools</span>
           <div class="image"><img src="./imges/products/Anatomy Model Set.jpg" alt=""></div>
           <div class="card-content">
@@ -398,7 +357,7 @@
             </div>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-id="2">
           <span class="badge">Diagnostic Tools</span>
           <div class="image"><img src="./imges/products/Arduino Starter Kit.webp" alt=""></div>
           <div class="card-content">
@@ -411,7 +370,20 @@
             </div>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-id="2">
+          <span class="badge">Diagnostic Tools</span>
+          <div class="image"><img src="./imges/products/Arduino Starter Kit.webp" alt=""></div>
+          <div class="card-content">
+            <h2>Professional Stethoscope</h2>
+            <p>High-quality acoustic stethoscope for medical students</p>
+            <div class="rating">⭐ 4.8 (124 reviews)</div>
+            <div class="card-bottom">
+              <span class="price">100 EGP</span>
+              <button class="add-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-id="3">
           <span class="badge">Diagnostic Tools</span>
           <div class="image"><img src="./imges/products/Dental Instrument Kit.jpg" alt=""></div>
           <div class="card-content">
@@ -424,7 +396,7 @@
             </div>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-id="4">
           <span class="badge">Diagnostic Tools</span>
           <div class="image"><img src="./imges/products/Dental Typodont Model.jpg" alt=""></div>
           <div class="card-content">
@@ -442,7 +414,9 @@
   </section>
   <!-- features -->
   <section class="features">
+    <!-- container - feature -->
     <div class="container">
+      <!-- feature -->
       <div class="feature">
         <i class="fa-solid fa-truck-fast"></i>
         <h3>Fast Shipping</h3>
@@ -467,8 +441,8 @@
   </section>
   <!-- footer -->
   <footer class="footer">
+    <!-- container - footer -->
     <div class="container">
-
       <!-- About -->
       <div class="footer-about">
         <img src="./imges/photo_٢٠٢٦-٠٢-٢٥_٠٨-٤٧-٣٧-removebg-preview.png" alt="logo">
@@ -477,41 +451,36 @@
           Supporting students in Medicine, Engineering, and Fine Arts.
         </p>
       </div>
-
       <!-- Colleges -->
       <div class="footer-col">
         <h5>Colleges</h5>
         <ul>
-          <li><a href="#">Medicine</a></li>
-          <li><a href="#">Engineering</a></li>
-          <li><a href="#">Fine Arts</a></li>
+          <li><a href="./Medicine.html">Medicine</a></li>
+          <li><a href="./Engineering.html">Engineering</a></li>
+          <li><a href="./Fine art.html">Fine Arts</a></li>
         </ul>
       </div>
-
       <!-- Quick Links -->
       <div class="footer-col">
         <h5>Quick Links</h5>
         <ul>
-          <li><a href="#">Shopping Cart</a></li>
-          <li><a href="#">Student Discounts</a></li>
-          <li><a href="#">Bulk Orders</a></li>
+          <li><a href="./All-product.html">All product</a></li>
+          <li><a href="./Checkout.html">Checkout</a></li>
+          <li><a href="./Sign-in.html">sign-in</a></li>
         </ul>
       </div>
-
       <!-- Services -->
       <div class="footer-col">
         <h5>Services</h5>
         <ul>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Help</a></li>
-          <li><a href="#">FAQs</a></li>
+          <li><a href="./Privacy-Policy.html">Privacy Policy</a></li>
+          <li><a href="./Return-Refunds.html">Returns & Refunds</a></li>
+          <li><a href="./FAQs-page.html">FAQs</a></li>
         </ul>
       </div>
-
       <!-- Contact & Social -->
       <div class="footer-col">
         <h5>Contact Us</h5>
-
         <div class="social-icons">
           <ul>
             <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -520,7 +489,6 @@
             <li><a class="linkedin" href="#"><i class="fab fa-linkedin-in"></i></a></li>
           </ul>
         </div>
-
         <div class="contact-info">
           <ul>
             <li>Email: hozifazidan@gmail.com</li>
@@ -529,17 +497,14 @@
           </ul>
         </div>
       </div>
-
     </div>
-
+    <!-- email -->
     <div class="copyright">
       © 2026 Hozifa ZIDANE. All rights reserved.
     </div>
   </footer>
-  </div>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="{% static 'js/main.js'%}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>
