@@ -1,42 +1,42 @@
- {% load static %} 
- 
- <!DOCTYPE html>
- <html lang="en">
-	 
-	 <head>
+ {% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <title>Sign in</title>
-    <link rel="stylesheet" href="{% static  'css/Sign-in.css' %}">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/Sign-in.css' %}">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 </head>
-
 <body>
-	{% if messages %}
-		 {% for message in messages %}
-			 <div style="color:white; padding:10px;">{{ message }}</div>
-		 {% endfor %}
-	 {% endif %}
 
-	<!--signup-->
+
+     <!--signup-->
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form action="{% url 'signup' %}" method="POST">
+		<form action="{% url 'signup' %}" method="post">
 			{% csrf_token %}
 			<h1>Create Account</h1>
 			<div class="social-container">
 				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
 			</div>
 			<span>or use your email for registration</span>
-			<input type="text"   name="username"   placeholder="Name" />
-			<input type="email"  name="email"    placeholder="Email" />
-			<input type="password"   name="password"  placeholder="Password" />
+			<input type="text" placeholder="Name" name="username" />
+			<input type="email"  name="email"  placeholder="Email" />
+			<input type="password" name="password" placeholder="Password" />
+			<!-- <label for="role">Select Role</label> -->
+            <select id="role">
+                <option value="student">Student</option>
+                <option value="admin">Admin</option>
+            </select>
 			<button>Sign Up</button>
 		</form>
 	</div>
 	<!--login -->
 	<div class="form-container sign-in-container">
-		<form action="{% url 'signin' %}" method="POST">
+		<form action="{% url 'signin' %}" method="post">
 			{% csrf_token %}
 			<h1>Sign in</h1>
 			<div class="social-container">
@@ -44,8 +44,13 @@
 			</div>
 			<span>or use your account</span>
 			<input type="email"  name="email"  placeholder="Email" />
-			<input type="password"  name="password"  placeholder="Password" />
-			<a href="#">Forgot your password?</a>
+			<input type="password"  name="password" placeholder="Password" />
+			<!-- <label for="role-login">Select Role</label> -->
+            <select id="role-login">
+                <option value="student">Student</option>
+                <option value="admin">Admin</option>
+            </select> 
+				<a href="./foget-password.html">Forgot your password?</a>
 			<button>Sign In</button>
 		</form>
 	</div>
@@ -64,6 +69,8 @@
 		</div>
 	</div>
 </div>
+
+<!-- js -->
 <script src="{% static 'js/Sign-in.js' %}"></script>
 </body>
 </html>

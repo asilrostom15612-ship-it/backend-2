@@ -1,13 +1,18 @@
+
 var cart = document.querySelector('.cart');
+var filterCart = document.querySelector('.filter-cart');
 const mobileMenu = document.getElementById('mobile-menu');
 const menuBtn = document.getElementById('mobile-menu-btn');
 function open_close_cart() {
     cart.classList.toggle("active");
 }
+function toggleCart() {
+    filterCart.classList.toggle("activee");
+}
 menuBtn.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
 });
-document.getElementById("loginBtn").onclick = function() {
+document.getElementById("loginBtn").onclick = function () {
     window.location.href = "../Sign-in.html";
 };
 let cartCount = 0;
@@ -76,7 +81,6 @@ addButtons.forEach(button => {
                 }
                 updateCart();
             });
-
             deleteBtn.addEventListener("click", () => {
                 cartCount -= cartItems[productId].quantity;
                 totalPrice -= productPrice * cartItems[productId].quantity;
@@ -94,13 +98,65 @@ function updateCart() {
     cartCountSpan.innerText = cartCount;
     totalPriceElement.innerText = totalPrice.toFixed(2) + " EGP";
 }
+// ================== SEARCH + FILTER + SORT ==================
+const searchInput = document.querySelector(".search-box input");
+const collegeFilter = document.getElementById("collegeFilter");
+const collegeFilterr = document.getElementById("collegeFilterr"); // menu
+const sortFilter = document.getElementById("sortFilter");
+const sortFilterr = document.getElementById("sortFilterr"); // menu
+const cards = document.querySelectorAll(".card");
 
+searchInput.addEventListener("input", filterProducts);
+collegeFilter.addEventListener("change", filterProducts);
+collegeFilterr.addEventListener("change", filterProducts);  // menu
+sortFilterr.addEventListener("change", filterProducts);   // menu
+sortFilter.addEventListener("change", filterProducts);
 
+function filterProducts() {
+    const searchValue = searchInput.value.toLowerCase();
+    const selectedCollege = collegeFilter.value.toLowerCase();
+    const selectedCollegee = collegeFilterr.value.toLowerCase();
+    const selectedSortt = sortFilterr.value;
+    const selectedSort = sortFilter.value;
 
+    let visibleCards = [];
 
+    cards.forEach(card => {
+        const title = card.querySelector("h2").innerText.toLowerCase();
+        const desc = card.querySelector("p").innerText.toLowerCase();
+        const category = card.dataset.category.toLowerCase();
 
+        const matchSearch = title.includes(searchValue) || desc.includes(searchValue);
+        const matchCategory = selectedCollege === "all colleges" || category === selectedCollege;
+        const matchCategoryy = selectedCollegee === "all colleges" || category === selectedCollegee;
 
+        if (matchSearch && matchCategory && matchCategoryy) {
+            card.style.display = "block";
+            visibleCards.push(card);
+        } else {
+            card.style.display = "none";
+        }
+    });
 
+    // Sorting
+    if (selectedSort === "Low Price") {
+        visibleCards.sort((a, b) => getPrice(a) - getPrice(b));
+    } else if (selectedSort === "High Price") {
+        visibleCards.sort((a, b) => getPrice(b) - getPrice(a));
+    }
 
+    // menu
+    if (selectedSortt === "Low Price") {
+        visibleCards.sort((a, b) => getPrice(a) - getPrice(b));
+    } else if (selectedSortt === "High Price") {
+        visibleCards.sort((a, b) => getPrice(b) - getPrice(a));
+    }
 
+    const container = document.querySelector(".cards");
+    visibleCards.forEach(card => container.appendChild(card));
+}
 
+// helper function
+function getPrice(card) {
+    return parseFloat(card.querySelector(".price").innerText);
+}

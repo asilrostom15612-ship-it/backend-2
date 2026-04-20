@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All-product</title>
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+  <!-- tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="./css/ss.css">
+  <link rel="stylesheet" href="./css/All-product.css">
+</head>
+
+<body>
+  <!-- Shopping Cart  -->
+  <div class="cart">
+    <div class="top_cart">
+      <h2 class="text flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-shopping-bag h-5 w-5">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+          <path d="M3 6h18"></path>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>Shopping Cart
+        <span class="cart-count">(0)</span>
+      </h2>
+      <span onclick="open_close_cart()" class="close_cart">
+        <i class="fa-regular fa-circle-xmark"></i>
+      </span>
+    </div>
+    <div class="items_in_cart">
+    </div>
+    <div class="bottom_cart">
+      <div class="total">
+        <p>TOTAL</p>
+        <p class="price_cart_toral">$0</p>
+      </div>
+      <div class="button_cart">
+        <a href="./Checkout.html" class="btn_cart btn">Checkout</a>
+        <span onclick="open_close_cart()" class="btn_cart trans_bg btn">Shop More</span>
+      </div>
+    </div>
+  </div>
+  <!-- header -->
+  <header class="sticky top-0 z-50 w-full border-b bg-lime-50">
+    <!-- container - header -->
+    <div class="container flex h-16 items-center justify-between gap-4">
+      <a class="flex items-center logo" href="./index.html">
+        <div class="logo-box">
+          <img src="./imges/photo_٢٠٢٦-٠٢-٢٥_٠٨-٤٧-٣٧-removebg-preview.png" alt="">
+        </div>
+      </a>
+      <!-- nav -->
+      <nav class="hidden md:flex items-center gap-6">
+        <a class="text-sm font-medium text-muted-foreground" href="./Medicine.html">Medicine</a>
+        <a class="text-sm font-medium text-muted-foreground" href="./Engineering.html">Engineering</a>
+        <a class="text-sm font-medium text-muted-foreground" href="./Fine art.html">Fine Arts</a>
+      </nav>
+      <!-- Search -->
+      <form class="hidden sm:flex flex-1 max-w-md mx-4">
+        <div class="relative w-full">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="absolute left-3 top-50 h-4 w-4 translate-y-minus-50 text-muted-foreground">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+          <input type="search"
+            class="flex h-10 rounded-md border-input border-0 px-3 py-2 text-base md:text-sm w-full pl-10 bg-muted-1"
+            placeholder="Search products..." value="">
+        </div>
+      </form>
+      <!-- icon -->
+      <div class="flex items-center gap-2">
+        <button id="loginBtn"
+          class="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium [&amp;_svg]:size-4 h-10 w-10 relative hover:bg-yellow-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <circle cx="12" cy="10" r="3" />
+            <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662" />
+            <a href="Sign-in.html"></a>
+          </svg>
+        </button>
+        <button onclick="open_close_cart()"
+          class="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium [&amp;_svg]:size-4 h-10 w-10 relative hover:bg-yellow-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="21" r="1"></circle>
+            <circle cx="19" cy="21" r="1"></circle>
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+          </svg>
+        </button>
+        <button id="mobile-menu-btn"
+          class="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium [&_svg]:size-4 h-10 w-10 relative md:hidden hover:bg-yellow-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" x2="20" y1="12" y2="12"></line>
+            <line x1="4" x2="20" y1="6" y2="6"></line>
+            <line x1="4" x2="20" y1="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- menu -->
+    <div id="mobile-menu" class="md:hidden border-t bg-card hidden">
+      <div class="container py-4 space-y-4">
+        <!-- Search - menu -->
+        <form>
+          <div class="relative">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="absolute left-3 top-50 h-4 w-4 translate-y-minus-50 text-muted-foreground">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.3-4.3"></path>
+            </svg>
+            <input type="search"
+              class="flex h-10 rounded-md border-input px-3 py-2 md:text-sm w-full pl-10 bg-muted-1 border-0"
+              placeholder="Search products..." value="">
+          </div>
+        </form>
+        <!-- nav - menu -->
+        <nav class="flex flex-col gap-2">
+          <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground hover:bg-muted nav"
+            href="./Medicine.html"><span class="text-xl">🏥</span><span class="font-medium">Medicine</span></a>
+          <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground hover:bg-muted nav"
+            href="./Engineering.html"><span class="text-xl">⚙️</span><span class="font-medium">Engineering</span></a>
+          <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground hover:bg-muted nav"
+            href="./Fine art.html"><span class="text-xl">🎨</span><span class="font-medium">Fine Arts</span></a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- section - products -->
+  <section class="products-page">
+    <div class="container p-y">
+      <h1 class="page-title">All Products</h1>
+      <div class="search-box">
+        <div class="search-input">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-search">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+          <input type="search" class="" placeholder="Search products..." value="">
+        </div>
+
+
+        <!-- filter Cart  -->
+        <div class="filter-cart">
+          <div class="top_cart">
+            <h2 class="text flex items-center gap-2">
+              Filters
+            </h2>
+            <span onclick="toggleCart()" class="close_cart"><i class="fa-regular fa-circle-xmark"></i></span>
+          </div>
+          <div class="items_in_cart">
+            <!-- filter-menu -->
+            <div class="products-layout-filter">
+              <aside class="filter-cartt">
+                <div class="sidebar-cart">
+                  <h3><i class="fa-solid fa-filter"></i> Filters</h3>
+                  <div class="filter-group">
+                    <label>College</label>
+                    <select id="collegeFilter">
+                      <option>All Colleges</option>
+                      <option>Civil </option>
+                      <option>Electrical </option>
+                      <option>Painting</option>
+                      <option>Sculpture</option>
+                      <option>Medicine</option>
+                      <option>Dentistry</option>
+                    </select>
+                  </div>
+
+                  <div class="filter-group">
+                    <label>Sort By</label>
+                    <select id="sortFilter">
+                      <option>Price</option>
+                      <option>Low Price</option>
+                      <option>High Price</option>
+                    </select>
+                  </div>
+
+                </div>
+              </aside>
+
+            </div>
+          </div>
+        </div>
+
+          <!-- button-menu -->
+        <button class=" filter-button lg:hidden " type="button" onclick="toggleCart()" aria-controls="radix-:r0:"
+          data-state="closed">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="filter-select">
+            <line x1="21" x2="14" y1="4" y2="4"></line>
+            <line x1="10" x2="3" y1="4" y2="4"></line>
+            <line x1="21" x2="12" y1="12" y2="12"></line>
+            <line x1="8" x2="3" y1="12" y2="12"></line>
+            <line x1="21" x2="16" y1="20" y2="20"></line>
+            <line x1="12" x2="3" y1="20" y2="20"></line>
+            <line x1="14" x2="14" y1="2" y2="6"></line>
+            <line x1="8" x2="8" y1="10" y2="14"></line>
+            <line x1="16" x2="16" y1="18" y2="22"></line>
+          </svg>Filters
+        </button>
+
+      </div>
+
+      <div class="products-layout">
+        <!-- filter-desktop -->
+        <aside class="filter hidden lg:block">
+          <div class="sidebar">
+            <h3><i class="fa-solid fa-filter"></i> Filters</h3>
+            <div class="filter-group">
+              <label>College</label>
+              <select id="collegeFilterr">
+                <option>All Colleges</option>
+                <option>Civil </option>
+                <option>Electrical </option>
+                <option>Painting</option>
+                <option>Sculpture</option>
+                <option>Medicine</option>
+                <option>Dentistry</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label>Sort By</label>
+              <select id="sortFilterr">
+                <option>Price</option>
+                <option>Low Price</option>
+                <option>High Price</option>
+              </select>
+            </div>
+
+          </div>
+        </aside>
+
+        <section class="products">
+          <div class="cards grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+
+            <div class="card" data-id="1" data-category="medicine">
+              <a href="./product.html" class="card-link">
+                <span class="badge">Diagnostic Tools</span>
+                <div class="image"><img src="./imges/products/N18893612A_1.avif" alt=""></div>
+                <div class="card-content">
+                  <h2>Professional Stethoscope</h2>
+                  <p>A high-quality stethoscope designed for accurate auscultation of heart, lung, and body sounds,
+                    making it an essential tool for medical students </p>
+                  <div class="rating">⭐ 4.8 (124 reviews)</div>
+                  <div class="card-bottom">
+                    <span class="price">1599.00 EGP</span>
+                    <button class="add-btn" onclick="event.preventDefault(); addToCart(1);">
+                      <i class="fa-solid fa-cart-shopping"></i></button>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="card" data-id="2" data-category="Electrical">
+              <a href="./product.html" class="card-link">
+                <span class="badge">Diagnostic Tools</span>
+                <div class="image"><img src="./imges/products/Digital multimeter.webp" alt=""></div>
+                <div class="card-content">
+                  <h2> Digital multimeter</h2>
+                  <p>A versatile digital multimeter designed to measure voltage, current, and resistance with high
+                    accuracy, making it an essential tool for electrical engineering and troubleshooting.</p>
+                  <div class="rating">⭐ 4.8 (124 reviews)</div>
+                  <div class="card-bottom">
+                    <span class="price">459.00 EGP</span>
+                    <button class="add-btn" onclick="event.preventDefault(); addToCart(1);">
+                      <i class="fa-solid fa-cart-shopping"></i></button>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="card" data-id="3" data-category="medicine">
+              <a href="./product.html" class="card-link">
+                <span class="badge">Diagnostic Tools</span>
+                <div class="image"><img
+                    src="./imges/products/bp-apparatus-lcd-regular-velcro-cuff-battery-bpdg-034-diamond-original-imag6jp9d2dwkjyg.webp"
+                    alt=""></div>
+                <div class="card-content">
+                  <h2>BP Monitor</h2>
+                  <p>A reliable digital blood pressure monitor designed for accurate and easy measurement of blood
+                    pressure at home or in clinical settings.</p>
+                  <div class="rating">⭐ 4.8 (124 reviews)</div>
+                  <div class="card-bottom">
+                    <span class="price">1299.00 EGP</span>
+                    <button class="add-btn" onclick="event.preventDefault(); addToCart(1);">
+                      <i class="fa-solid fa-cart-shopping"></i></button>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="card" data-id="4" data-category="Painting">
+              <a href="./product.html" class="card-link">
+                <span class="badge">Training Tools</span>
+                <div class="image"><img src="./imges/products/Sketch pencils.webp" alt=""></div>
+                <div class="card-content">
+                  <h2>Sketch pencils</h2>
+                  <p>A set of sketch pencils in different grades, designed for drawing, shading, and sketching with
+                    precision and controlIdeal for creating detailed artwork and improving sketching skills.</p>
+                  <div class="rating">⭐ 4.8 (124 reviews)</div>
+                  <div class="card-bottom">
+                    <span class="price">1949.00 EGP</span>
+                    <button class="add-btn" onclick="event.preventDefault(); addToCart(1);">
+                      <i class="fa-solid fa-cart-shopping"></i></button>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="card" data-id="1" data-category="Painting">
+              <a href="./product.html" class="card-link">
+                <span class="badge">Training Tools</span>
+                <div class="image"><img src="./imges/products/Basic paint sets.webp" alt=""></div>
+                <div class="card-content">
+                  <h2>Basic paint sets</h2>
+                  <p>A beginner-friendly basic paint set designed for students to practice color mixing, shading, and
+                    painting techniques includes essential colors suitable for learning and art skills .</p>
+                  <div class="rating">⭐ 4.8 (124 reviews)</div>
+                  <div class="card-bottom">
+                    <span class="price">1359.00 EGP</span>
+                    <button class="add-btn" onclick="event.preventDefault(); addToCart(1);">
+                      <i class="fa-solid fa-cart-shopping"></i></button>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="card" data-id="6" data-category="dentistry">
+              <a href="./product.html" class="card-link">
+                <span class="badge">Clinical Tools</span>
+                <div class="image"><img src="./imges/products/71RNtfCLkxL._AC_SX679_.jpg" alt=""></div>
+                <div class="card-content">
+                  <h2>Dental Anesthetic Injection</h2>
+                  <p>A high-quality dental anesthetic injection containing Lidocaine, designed to provide fast and
+                    effective local anesthesia during dental procedures</p>
+                  <div class="rating">⭐ 4.8 (124 reviews)</div>
+                  <div class="card-bottom">
+                    <span class="price">700.00 EGP</span>
+                    <button class="add-btn" onclick="event.preventDefault(); addToCart(1);">
+                      <i class="fa-solid fa-cart-shopping"></i></button>
+                  </div>
+                </div>
+              </a>
+
+            </div>
+            <div class="card" data-id="7" data-category="Sculpture">
+              <a href="./product.html" class="card-link">
+                <span class="badge">work Tools</span>
+                <div class="image"><img src="./imges/products/Finishing tools.jpeg" alt=""></div>
+                <div class="card-content">
+                  <h2>Finishing tools</h2>
+                  <p>A set of finishing tools used to refine Sculptors and fine art professionals, smooth, and polish
+                    professionals sculptures for a final look clean and polished professional polish final look.</p>
+                  <div class="rating">⭐ 4.8 (124 reviews)</div>
+                  <div class="card-bottom">
+                    <span class="price">1300.00 EGP</span>
+                    <button class="add-btn" onclick="event.preventDefault(); addToCart(1);">
+                      <i class="fa-solid fa-cart-shopping"></i></button>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="card" data-id="8" data-category="dentistry">
+              <a href="./product.html" class="card-link">
+                <span class="badge">Clinical Tools</span>
+                <div class="image"><img src="./imges/products/download.jpeg" alt=""></div>
+                <div class="card-content">
+                  <h2>Dental contra high speed</h2>
+                  <p>HA reference section that explains situations where certain dental treatments, procedures, or
+                    products should not be used due to potential risks to the patient.</p>
+                  <div class="rating">⭐ 4.8 (124 reviews)</div>
+                  <div class="card-bottom">
+                    <span class="price">1799.00 EGP</span>
+                    <button class="add-btn" onclick="event.preventDefault(); addToCart(1);">
+                      <i class="fa-solid fa-cart-shopping"></i></button>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer class="footer">
+    <!-- container - footer -->
+    <div class="container">
+      <!-- About -->
+      <div class="footer-about">
+        <img src="./imges/photo_٢٠٢٦-٠٢-٢٥_٠٨-٤٧-٣٧-removebg-preview.png" alt="logo">
+        <p>
+          Your one-stop shop for professional educational tools and equipment.
+          Supporting students in Medicine, Engineering, and Fine Arts.
+        </p>
+      </div>
+      <!-- Colleges -->
+      <div class="footer-col">
+        <h5>Colleges</h5>
+        <ul>
+          <li><a href="./Medicine.html">Medicine</a></li>
+          <li><a href="./Engineering.html">Engineering</a></li>
+          <li><a href="./Fine art.html">Fine Arts</a></li>
+        </ul>
+      </div>
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="./All-product.html">All product</a></li>
+          <li><a href="./Checkout.html">Checkout</a></li>
+          <li><a href="./Sign-in.html">sign-in</a></li>
+        </ul>
+      </div>
+      <!-- Services -->
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="./Privacy-Policy.html">Privacy Policy</a></li>
+          <li><a href="./Return-Refunds.html">Returns & Refunds</a></li>
+          <li><a href="./FAQs-page.html">FAQs</a></li>
+        </ul>
+      </div>
+      <!-- Contact & Social -->
+      <div class="footer-col">
+        <h5>Contact Us</h5>
+        <div class="social-icons">
+          <ul>
+            <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
+            <li><a class="linkedin" href="#"><i class="fab fa-linkedin-in"></i></a></li>
+          </ul>
+        </div>
+        <div class="contact-info">
+          <ul>
+            <li>Email: hozifazidan@gmail.com</li>
+            <li>Phone: 01024629712</li>
+            <li>El Minya, Egypt</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- email -->
+    <div class="copyright">
+      © 2026 Hozifa ZIDANE. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/All-product.js"></script>
+
+</body>
+
+</html>

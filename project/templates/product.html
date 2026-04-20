@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>product</title>
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+  <!-- tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="./css/product.css">
+  <link rel="stylesheet" href="./css/ss.css">
+</head>
+
+<body>
+  <!-- Shopping Cart  -->
+  <div class="cart">
+    <div class="top_cart">
+      <h2 class="text flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-shopping-bag h-5 w-5">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+          <path d="M3 6h18"></path>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>Shopping Cart
+        <span class="cart-count">(0)</span>
+      </h2>
+      <span onclick="open_close_cart()" class="close_cart">
+        <i class="fa-regular fa-circle-xmark"></i>
+      </span>
+    </div>
+    <div class="items_in_cart">
+    </div>
+    <div class="bottom_cart">
+      <div class="total">
+        <p>TOTAL</p>
+        <p class="price_cart_toral">$0</p>
+      </div>
+      <div class="button_cart">
+        <a href="./Checkout.html" class="btn_cart btn">Checkout</a>
+        <span onclick="open_close_cart()" class="btn_cart trans_bg btn">Shop More</span>
+      </div>
+    </div>
+  </div>
+    <!-- header -->
+  <header class="sticky top-0 z-50 w-full border-b bg-lime-50">
+    <!-- container - header -->
+    <div class="container flex h-16 items-center justify-between gap-4">
+      <a class="flex items-center logo" href="./index.html">
+        <div class="logo-box">
+          <img src="./imges/photo_٢٠٢٦-٠٢-٢٥_٠٨-٤٧-٣٧-removebg-preview.png" alt="">
+        </div>
+      </a>
+      <!-- nav -->
+      <nav class="hidden md:flex items-center gap-6">
+        <a class="text-sm font-medium text-muted-foreground" href="./Medicine.html">Medicine</a>
+        <a class="text-sm font-medium text-muted-foreground" href="./Engineering.html">Engineering</a>
+        <a class="text-sm font-medium text-muted-foreground" href="./Fine art.html">Fine Arts</a>
+      </nav>
+      <!-- Search -->
+      <form class="hidden sm:flex flex-1 max-w-md mx-4">
+        <div class="relative w-full">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="absolute left-3 top-50 h-4 w-4 translate-y-minus-50 text-muted-foreground">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+          <input type="search"
+            class="flex h-10 rounded-md border-input border-0 px-3 py-2 text-base md:text-sm w-full pl-10 bg-muted-1"
+            placeholder="Search products..." value="">
+        </div>
+      </form>
+      <!-- icon -->
+      <div class="flex items-center gap-2">
+        <!-- Sign-in -->
+        <a href="./Sign-in.html" id="loginBtn"
+          class="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium [&amp;_svg]:size-4 h-10 w-10 relative hover:bg-yellow-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <circle cx="12" cy="10" r="3" />
+            <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662" />
+          </svg>
+        </a>
+        <button onclick="open_close_cart()"
+          class="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium [&amp;_svg]:size-4 h-10 w-10 relative hover:bg-yellow-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="21" r="1"></circle>
+            <circle cx="19" cy="21" r="1"></circle>
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+          </svg>
+        </button>
+        <button id="mobile-menu-btn"
+          class="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium [&_svg]:size-4 h-10 w-10 relative md:hidden hover:bg-yellow-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" x2="20" y1="12" y2="12"></line>
+            <line x1="4" x2="20" y1="6" y2="6"></line>
+            <line x1="4" x2="20" y1="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- menu -->
+    <div id="mobile-menu" class="md:hidden border-t bg-card hidden">
+      <div class="container py-4 space-y-4">
+        <!-- Search - menu -->
+        <form>
+          <div class="relative">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="absolute left-3 top-50 h-4 w-4 translate-y-minus-50 text-muted-foreground">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.3-4.3"></path>
+            </svg>
+            <input type="search"
+              class="flex h-10 rounded-md border-input px-3 py-2 md:text-sm w-full pl-10 bg-muted-1 border-0"
+              placeholder="Search products..." value="">
+          </div>
+        </form>
+        <!-- nav - menu -->
+        <nav class="flex flex-col gap-2">
+          <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground hover:bg-muted nav"
+            href="./Medicine.html"><span class="text-xl">🏥</span><span class="font-medium">Medicine</span></a>
+          <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground hover:bg-muted nav"
+            href="./Engineering.html"><span class="text-xl">⚙️</span><span class="font-medium">Engineering</span></a>
+          <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground hover:bg-muted nav"
+            href="./Fine art.html"><span class="text-xl">🎨</span><span class="font-medium">Fine Arts</span></a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- main -->
+  <main>
+    <div class="max-w-7xl mx-auto px-4 py-12">
+      <div class="container">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+
+          <!-- Images Section -->
+          <div class="space-y-6">
+            <div class="relative rounded-2xl overflow-hidden bg-white shadow-2xl border border-gray-100">
+              <img id="mainImage" src="./imges/products/3Ring_Style_Syringe_1-450x450.jpg-removebg-preview.png"
+                alt="Wireless Headphones" class="product-image w-full h-auto object-cover">
+
+              <!-- Discount Badge -->
+              <div
+                class="absolute top-6 left-6 bg-blue-500 text-white text-sm font-bold px-5 py-1.5 rounded-full shadow-lg">
+                Diagnostic Tools
+              </div>
+            </div>
+
+            <!-- Thumbnails -->
+            <div class="grid grid-cols-4 gap-4">
+              <img onclick="changeImage(this)" src="./imges/products/514DxPDgAJL._AC_SX679_.jpg"
+                class="thumbnail w-full aspect-square object-cover rounded-2xl border-2 border-transparent cursor-pointer">
+              <img onclick="changeImage(this)" src="./imges/products/71RNtfCLkxL._AC_SX679_.jpg"
+                class="thumbnail w-full aspect-square object-cover rounded-2xl border-2 border-transparent cursor-pointer">
+              <img onclick="changeImage(this)" src="./imges/products/Anatomy Model Set.jpg"
+                class="thumbnail w-full aspect-square object-cover rounded-2xl border-2 border-transparent cursor-pointer">
+              <img onclick="changeImage(this)" src="./imges/products/tweezerwal4_1024x.webp"
+                class="thumbnail w-full aspect-square object-cover rounded-2xl border-2 border-transparent cursor-pointer">
+            </div>
+          </div>
+
+          <!-- Product Information -->
+          <div class="space-y-8">
+            <div>
+              <h1 class="text-4xl font-bold text-gray-900 leading-tight">Premium Wireless Headphones Pro</h1>
+            </div>
+
+            <!-- Price & Rating -->
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-4xl font-semibold text-gray-900">$299</span>
+                <span class="text-xl text-gray-400 line-through ml-3">$399</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="flex text-2xl text-yellow-400">★★★★☆</div>
+                <span class="text-gray-600">(247 reviews)</span>
+              </div>
+            </div>
+
+            <!-- Short Description -->
+            <p class="text-gray-600 leading-relaxed text-lg">
+              Experience premium sound with active noise cancellation, 360° spatial audio, and up to 30 hours of battery
+              life.
+            </p>
+
+            <!-- Variants -->
+            <div>
+              <p class="font-medium text-gray-700 mb-3">Style:</p>
+              <div class="flex gap-3">
+                <button
+                  class="variant-btn active px-7 py-3 rounded-2xl border border-gray-300 hover:border-blue-500 transition">Over-Ear</button>
+                <button
+                  class="variant-btn px-7 py-3 rounded-2xl border border-gray-300 hover:border-blue-500 transition">In-Ear</button>
+              </div>
+            </div>
+
+            <!-- Quantity & Add to Cart -->
+            <div class="flex items-center gap-6">
+              <div class="flex items-center border border-gray-300 rounded-3xl">
+                <button onclick="changeQty(-1)"
+                  class="w-12 h-12 flex items-center justify-center text-2xl font-light">-</button>
+                <span id="quantity" class="w-12 text-center text-xl font-medium">1</span>
+                <button onclick="changeQty(1)"
+                  class="w-12 h-12 flex items-center justify-center text-2xl font-light">+</button>
+              </div>
+
+              <button onclick="addToCart()"
+                class="flex-1 bg-blue-500 hover:bg-blue-600 transition text-white font-semibold py-4 rounded-3xl text-lg shadow-lg shadow-blue-500/30">
+                Add to Cart
+              </button>
+            </div>
+
+            <!-- Buy Now -->
+            <button onclick="buyNow()"
+              class="w-full bg-black hover:bg-gray-900 transition text-white font-semibold py-4 rounded-3xl text-lg">
+              Buy Now
+            </button>
+
+            <!-- Quick Features -->
+            <div class="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200">
+              <div class="text-center">
+                <i class="fa-solid fa-truck text-3xl text-blue-500 mb-3"></i>
+                <p class="text-sm font-medium">Free Shipping</p>
+              </div>
+              <div class="text-center">
+                <i class="fa-solid fa-shield-halved text-3xl text-blue-500 mb-3"></i>
+                <p class="text-sm font-medium">2-Year Warranty</p>
+              </div>
+              <div class="text-center">
+                <i class="fa-solid fa-rotate text-3xl text-blue-500 mb-3"></i>
+                <p class="text-sm font-medium">14-Day Return</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- footer -->
+  <footer class="footer">
+    <!-- container - footer -->
+    <div class="container">
+      <!-- About -->
+      <div class="footer-about">
+        <img src="./imges/photo_٢٠٢٦-٠٢-٢٥_٠٨-٤٧-٣٧-removebg-preview.png" alt="logo">
+        <p>
+          Your one-stop shop for professional educational tools and equipment.
+          Supporting students in Medicine, Engineering, and Fine Arts.
+        </p>
+      </div>
+      <!-- Colleges -->
+      <div class="footer-col">
+        <h5>Colleges</h5>
+        <ul>
+          <li><a href="./Medicine.html">Medicine</a></li>
+          <li><a href="./Engineering.html">Engineering</a></li>
+          <li><a href="./Fine art.html">Fine Arts</a></li>
+        </ul>
+      </div>
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="./All-product.html">All product</a></li>
+          <li><a href="./Checkout.html">Checkout</a></li>
+          <li><a href="./Sign-in.html">sign-in</a></li>
+        </ul>
+      </div>
+      <!-- Services -->
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="./Privacy-Policy.html">Privacy Policy</a></li>
+          <li><a href="./Return-Refunds.html">Returns & Refunds</a></li>
+          <li><a href="./FAQs-page.html">FAQs</a></li>
+        </ul>
+      </div>
+      <!-- Contact & Social -->
+      <div class="footer-col">
+        <h5>Contact Us</h5>
+        <div class="social-icons">
+          <ul>
+            <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
+            <li><a class="linkedin" href="#"><i class="fab fa-linkedin-in"></i></a></li>
+          </ul>
+        </div>
+        <div class="contact-info">
+          <ul>
+            <li>Email: hozifazidan@gmail.com</li>
+            <li>Phone: 01024629712</li>
+            <li>El Minya, Egypt</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- email -->
+    <div class="copyright">
+      © 2026 Hozifa ZIDANE. All rights reserved.
+    </div>
+  </footer>
+
+
+
+
+
+  <script src="./js/product.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+
+</html>

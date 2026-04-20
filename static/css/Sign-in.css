@@ -103,6 +103,7 @@ input {
 	padding: 12px 15px;
 	margin: 8px 0;
 	width: 100%;
+  border-radius: .28rem;
 }
 
 .container {
@@ -238,5 +239,21 @@ input {
 	margin: 0 5px;
 	height: 40px;
 	width: 40px;
+}
+select {
+	background-color: #eee;
+	border: none;
+	padding: 12px 8px;
+	margin: 8px 0;
+	width: 100%;
+	border-radius: .28rem;
+	font-family: 'Montserrat', sans-serif;
+}
+
+label {
+	align-self: flex-start;
+	font-size: 12px;
+	margin-top: 5px;
+	color: #555;
 }
 

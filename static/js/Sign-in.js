@@ -10,7 +10,7 @@ container.classList.remove("right-panel-active");
 const signUpForm = document.querySelector(".sign-up-container form");
 const signInForm = document.querySelector(".sign-in-container form");
 const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,}$/;
-
+const namePattern = /^[A-Z][a-zA-Z]*$/;
 function showError(input, message) {
     removeError(input);
     const small = document.createElement("small");
@@ -38,7 +38,10 @@ signUpForm.addEventListener("submit", function (e) {
             removeError(input);
         }
     });
-  
+    if (!namePattern.test(name.value)) {
+        showError(name, "Name must start with a capital letter");
+        valid = false;
+    }
     if (!emailPattern.test(email.value)) {
         showError(email, "Enter a valid email");
         valid = false;

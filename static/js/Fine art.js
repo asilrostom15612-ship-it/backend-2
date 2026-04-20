@@ -76,7 +76,6 @@ addButtons.forEach(button => {
                 }
                 updateCart();
             });
-
             deleteBtn.addEventListener("click", () => {
                 cartCount -= cartItems[productId].quantity;
                 totalPrice -= productPrice * cartItems[productId].quantity;
@@ -94,13 +93,23 @@ function updateCart() {
     cartCountSpan.innerText = cartCount;
     totalPriceElement.innerText = totalPrice.toFixed(2) + " EGP";
 }
-
-
-
-
-
-
-
-
-
-
+let buttons = document.querySelectorAll(".filters button");
+let cards = document.querySelectorAll(".card");
+buttons.forEach(button => {
+    button.addEventListener("click", function () {
+        buttons.forEach(btn => btn.classList.remove("active"));
+        this.classList.add("active");
+        let filter = this.getAttribute("data-filter");
+        cards.forEach(card => {
+            if (filter === "all") {
+                card.style.display = "block";
+            }
+            else if (card.getAttribute("data-category") === filter) {
+                card.style.display = "block";
+            }
+            else {
+                card.style.display = "none";
+            }
+        });
+    });
+});

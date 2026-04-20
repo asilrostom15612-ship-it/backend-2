@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+  <!-- tailwind  -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" href="./css/Checkout.css">
+  <link rel="stylesheet" href="./css/ss.css">
+  <!-- tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <!-- Shopping Cart  -->
+  <div class="cart">
+    <div class="top_cart">
+      <h2 class="text flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-shopping-bag h-5 w-5">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+          <path d="M3 6h18"></path>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>Shopping Cart
+        <span class="cart-count">(0)</span>
+      </h2>
+      <span onclick="open_close_cart()" class="close_cart">
+        <i class="fa-regular fa-circle-xmark"></i>
+      </span>
+    </div>
+    <div class="items_in_cart">
+    </div>
+    <div class="bottom_cart">
+      <div class="total">
+        <p>TOTAL</p>
+        <p class="price_cart_toral">$0</p>
+      </div>
+      <div class="button_cart">
+        <a href="./Checkout.html" class="btn_cart btn">Checkout</a>
+        <span onclick="open_close_cart()" class="btn_cart trans_bg btn">Shop More</span>
+      </div>
+    </div>
+  </div>
+  <!-- header -->
+  <header class="sticky top-0 z-50 w-full border-b bg-lime-50">
+    <!-- container - header -->
+    <div class="container flex h-16 items-center justify-between gap-4">
+      <a class="flex items-center logo" href="./index.html">
+        <div class="logo-box">
+          <img src="./imges/photo_٢٠٢٦-٠٢-٢٥_٠٨-٤٧-٣٧-removebg-preview.png" alt="">
+        </div>
+      </a>
+      <!-- nav -->
+      <nav class="hidden md:flex items-center gap-6">
+        <a class="text-sm font-medium text-muted-foreground" href="./Medicine.html">Medicine</a>
+        <a class="text-sm font-medium text-muted-foreground" href="./Engineering.html">Engineering</a>
+        <a class="text-sm font-medium text-muted-foreground" href="./Fine art.html">Fine Arts</a>
+      </nav>
+      <!-- Search -->
+      <form class="hidden sm:flex flex-1 max-w-md mx-4">
+        <div class="relative w-full">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="absolute left-3 top-50 h-4 w-4 translate-y-minus-50 text-muted-foreground">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+          <input type="search"
+            class="flex h-10 rounded-md border-input border-0 px-3 py-2 text-base md:text-sm w-full pl-10 bg-muted-1"
+            placeholder="Search products..." value="">
+        </div>
+      </form>
+      <!-- icon -->
+      <div class="flex items-center gap-2">
+        <!-- Sign-in -->
+        <a href="./Sign-in.html" id="loginBtn"
+          class="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium [&amp;_svg]:size-4 h-10 w-10 relative hover:bg-yellow-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <circle cx="12" cy="10" r="3" />
+            <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662" />
+          </svg>
+        </a>
+        <button onclick="open_close_cart()"
+          class="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium [&amp;_svg]:size-4 h-10 w-10 relative hover:bg-yellow-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="21" r="1"></circle>
+            <circle cx="19" cy="21" r="1"></circle>
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+          </svg>
+        </button>
+        <button id="mobile-menu-btn"
+          class="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium [&_svg]:size-4 h-10 w-10 relative md:hidden hover:bg-yellow-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" x2="20" y1="12" y2="12"></line>
+            <line x1="4" x2="20" y1="6" y2="6"></line>
+            <line x1="4" x2="20" y1="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- menu -->
+    <div id="mobile-menu" class="md:hidden border-t bg-card hidden">
+      <div class="container py-4 space-y-4">
+        <!-- Search - menu -->
+        <form>
+          <div class="relative">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="absolute left-3 top-50 h-4 w-4 translate-y-minus-50 text-muted-foreground">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.3-4.3"></path>
+            </svg>
+            <input type="search"
+              class="flex h-10 rounded-md border-input px-3 py-2 md:text-sm w-full pl-10 bg-muted-1 border-0"
+              placeholder="Search products..." value="">
+          </div>
+        </form>
+        <!-- nav - menu -->
+        <nav class="flex flex-col gap-2">
+          <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground hover:bg-muted nav"
+            href="./Medicine.html"><span class="text-xl">🏥</span><span class="font-medium">Medicine</span></a>
+          <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground hover:bg-muted nav"
+            href="./Engineering.html"><span class="text-xl">⚙️</span><span class="font-medium">Engineering</span></a>
+          <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground hover:bg-muted nav"
+            href="./Fine art.html"><span class="text-xl">🎨</span><span class="font-medium">Fine Arts</span></a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- main -->
+  <main class="flex-1">
+    <div class="bg-muted/30 min-h-screen">
+      <div class="container py-8">
+        <div class="flex items-center gap-4 mb-8">
+          <a class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium bg [&amp;_svg]:size-4 h-10 w-10"
+            href="./All-product.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-arrow-left h-5 w-5">
+              <path d="m12 19-7-7 7-7"></path>
+              <path d="M19 12H5"></path>
+            </svg>
+          </a>
+          <h1 class="text-3xl font-bold text-foreground">Checkout</h1>
+        </div>
+        <div class="grid gap-8 lg:grid-cols-2">
+          <form class="space-y-6">
+            <div class="bg-card rounded-xl border border-border p-6">
+              <div class="flex items-center gap-2 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-truck h-5 w-5 text-muted-foreground">
+                  <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path>
+                  <path d="M15 18H9"></path>
+                  <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path>
+                  <circle cx="17" cy="18" r="2"></circle>
+                  <circle cx="7" cy="18" r="2"></circle>
+                </svg>
+                <h2 class="font-semibold text-lg">Shipping Information</h2>
+              </div>
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div class="space-y-2"><label
+                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    for="firstName">First Name</label><input
+                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                    id="firstName" placeholder="John" required=""></div>
+                <div class="space-y-2"><label
+                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    for="lastName">Last Name</label><input
+                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                    id="lastName" placeholder="Doe" required=""></div>
+                <div class="space-y-2 sm:col-span-2"><label
+                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    for="email">Email</label><input type="email"
+                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                    id="email" placeholder="john@university.edu" required=""></div>
+                <div class="space-y-2 sm:col-span-2"><label
+                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    for="address">Address</label><input
+                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                    id="address" placeholder="123 University Ave" required=""></div>
+                <div class="space-y-2"><label
+                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    for="city">City</label><input
+                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                    id="city" placeholder="City" required=""></div>
+                <div class="space-y-2"><label
+                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    for="zip">ZIP Code</label><input
+                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                    id="zip" placeholder="12345" required=""></div>
+              </div>
+            </div>
+            <div class="bg-card rounded-xl border border-border p-6">
+              <div class="payment-card grid gap-4 sm:grid-cols-1">
+                <h2 class="section-title">
+                  <i class="fa-solid fa-credit-card text-primary"></i>
+                  Payment Method
+                </h2>
+                <label class="method-option" id="label-vodafone">
+                  <input type="radio" name="paymentMethod" value="vodafone">
+                  <div class="icon-box">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                  </div>
+                  <div class="method-content">
+                    <h3>Vodafone Cash</h3>
+                    <p>Pay securely using your Vodafone Cash wallet</p>
+                    <div id="vodafone-details">
+                      <div class="pt-3">
+                        <label class="form-label fw-bold small text-dark">Vodafone Cash Phone Number</label>
+                        <input type="text" id="v-phone" class="form-control form-control-custom"
+                          placeholder="010xxxxxxxxx" maxlength="11">
+                        <div class="helper-text small text-muted mt-1">Enter the registered Vodafone number (11 digits)
+                        </div>
+                        <div id="v-error" class="error-text">Please enter a valid Egyptian number starting with 010,
+                          011, 012, or 015.</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="selection-check">
+                    <i class="fa-solid fa-circle-check fa-lg"></i>
+                  </div>
+                </label>
+                <label class="method-option" id="label-cod">
+                  <input type="radio" name="paymentMethod" value="cod">
+                  <div class="icon-box">
+                    <i class="fa-solid fa-money-bill-wave"></i>
+                  </div>
+                  <div class="method-content">
+                    <h3>Cash on Delivery</h3>
+                    <p>Pay in cash when your order arrives – no payment now</p>
+                  </div>
+                  <div class="selection-check">
+                    <i class="fa-solid fa-circle-check fa-lg"></i>
+                  </div>
+                </label>
+                <div class="trust-badges">
+                  <div class="badge-item">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Secure Payment</span>
+                  </div>
+                  <div class="badge-item">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <span>Fast Delivery</span>
+                  </div>
+                  <div class="badge-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Safe Checkout</span>
+                  </div>
+                </div>
+                <button id="confirm-btn" class="btn-confirm" disabled>
+                  Confirm Payment
+                </button>
+              </div>
+            </div>
+          </form>
+          <div>
+            <div class="bg-card rounded-xl border border-border p-6 sticky top-24">
+              <h2 class="font-semibold text-lg mb-4">Order Summary</h2>
+              <div class="space-y-4 mb-6">
+                <div class="flex gap-3">
+                  <div class="h-16 w-16 flex-shrink-0 rounded-lg bg-muted overflow-hidden"><img src="./imges/products/3Ring_Style_Syringe_1-450x450.jpg-removebg-preview.png" style="object-fit: cover;"
+                      alt="Oil Paint Master Set" class="h-full w-full object-cover"></div>
+                  <div class="flex-1">
+                    <p class="font-medium text-sm line-clamp-1">Oil Paint Master Set</p>
+                    <p class="text-sm text-muted-foreground">Qty: 1</p>
+                  </div>
+                  <p class="font-medium">$149.99</p>
+                </div>
+              </div>
+              <div class="border-t border-border pt-4 space-y-2 text-sm">
+                <div class="flex justify-between"><span
+                    class="text-muted-foreground">Subtotal</span><span>$149.99</span></div>
+                <div class="flex justify-between"><span class="text-muted-foreground">Shipping</span><span
+                    class="text-medicine">Free</span></div>
+                <div class="flex justify-between"><span class="text-muted-foreground">Tax</span><span>$12.00</span>
+                </div>
+              </div>
+              <div class="border-t border-border mt-4 pt-4">
+                <div class="flex justify-between font-semibold text-lg"><span>Total</span><span>$161.99</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- footer -->
+  <footer class="footer">
+    <!-- container - footer -->
+    <div class="container">
+      <!-- About -->
+      <div class="footer-about">
+        <img src="./imges/photo_٢٠٢٦-٠٢-٢٥_٠٨-٤٧-٣٧-removebg-preview.png" alt="logo">
+        <p>
+          Your one-stop shop for professional educational tools and equipment.
+          Supporting students in Medicine, Engineering, and Fine Arts.
+        </p>
+      </div>
+      <!-- Colleges -->
+      <div class="footer-col">
+        <h5>Colleges</h5>
+        <ul>
+          <li><a href="./Medicine.html">Medicine</a></li>
+          <li><a href="./Engineering.html">Engineering</a></li>
+          <li><a href="./Fine art.html">Fine Arts</a></li>
+        </ul>
+      </div>
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="./All-product.html">All product</a></li>
+          <li><a href="./Checkout.html">Checkout</a></li>
+          <li><a href="./Sign-in.html">sign-in</a></li>
+        </ul>
+      </div>
+      <!-- Services -->
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="./Privacy-Policy.html">Privacy Policy</a></li>
+          <li><a href="./Return-Refunds.html">Returns & Refunds</a></li>
+          <li><a href="./FAQs-page.html">FAQs</a></li>
+        </ul>
+      </div>
+      <!-- Contact & Social -->
+      <div class="footer-col">
+        <h5>Contact Us</h5>
+        <div class="social-icons">
+          <ul>
+            <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
+            <li><a class="linkedin" href="#"><i class="fab fa-linkedin-in"></i></a></li>
+          </ul>
+        </div>
+        <div class="contact-info">
+          <ul>
+            <li>Email: hozifazidan@gmail.com</li>
+            <li>Phone: 01024629712</li>
+            <li>El Minya, Egypt</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- email -->
+    <div class="copyright">
+      © 2026 Hozifa ZIDANE. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const radios = document.querySelectorAll('input[name="paymentMethod"]');
+      const options = document.querySelectorAll('.method-option');
+      const vodafoneDetails = document.getElementById('vodafone-details');
+      const phoneInput = document.getElementById('v-phone');
+      const confirmBtn = document.getElementById('confirm-btn');
+      const errorText = document.getElementById('v-error');
+
+      // Handle Card Selection
+      radios.forEach(radio => {
+        radio.addEventListener('change', function () {
+          // Update CSS classes
+          options.forEach(opt => opt.classList.remove('selected'));
+          this.closest('.method-option').classList.add('selected');
+
+          // Toggle Vodafone input visibility
+          if (this.value === 'vodafone') {
+            vodafoneDetails.classList.add('active');
+            // Small delay to focus
+            setTimeout(() => phoneInput.focus(), 400);
+          } else {
+            vodafoneDetails.classList.remove('active');
+            errorText.style.display = 'none';
+          }
+
+          validateForm();
+        });
+      });
+
+      // Phone Number Validation Logic
+      phoneInput.addEventListener('input', function (e) {
+        // Remove non-numeric characters
+        this.value = this.value.replace(/\D/g, '');
+        validateForm();
+      });
+
+      function validateForm() {
+        const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked');
+
+        if (!selectedMethod) {
+          setButtonState(false);
+          return;
+        }
+
+        if (selectedMethod.value === 'cod') {
+          setButtonState(true);
+        } else if (selectedMethod.value === 'vodafone') {
+          const phone = phoneInput.value;
+          const isValid = validateEgyptianPhone(phone);
+
+          if (phone.length > 0 && !isValid) {
+            errorText.style.display = 'block';
+          } else {
+            errorText.style.display = 'none';
+          }
+
+          setButtonState(isValid);
+        }
+      }
+
+      function validateEgyptianPhone(number) {
+        // Regex: Starts with 010, 011, 012, or 015 and followed by 8 digits (total 11)
+        const regex = /^(010|011|012|015)\d{8}$/;
+        return regex.test(number);
+      }
+
+      function setButtonState(enable) {
+        if (enable) {
+          confirmBtn.disabled = false;
+          confirmBtn.classList.add('enabled');
+        } else {
+          confirmBtn.disabled = true;
+          confirmBtn.classList.remove('enabled');
+        }
+      }
+
+      // Mock Submission
+      confirmBtn.addEventListener('click', function () {
+        if (this.classList.contains('enabled')) {
+          const method = document.querySelector('input[name="paymentMethod"]:checked').value;
+          this.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Processing...';
+
+          setTimeout(() => {
+            alert('Order Placed Successfully via ' + method.toUpperCase());
+            location.reload();
+          }, 1500);
+        }
+      });
+    });
+  </script>
+  <script src="./js/Checkout.js"></script>
+</body>
+
+</html>

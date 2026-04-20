@@ -7,7 +7,7 @@ class college (models.Model):
 
   def __str__(self):
     return self.name
-
+  
 
 # customers
 class customer(models.Model):
@@ -19,15 +19,17 @@ class customer(models.Model):
 
   def __str__(self):
     return f'{self.first_name} {self.last_name}'
+  
 
 
 
 #All products
 class product(models.Model):
   name=models.CharField(max_length=100)
-  price=models.DecimalField(default=0,decimal_places=3,max_digits=6)
+  price=models.DecimalField(default=0,decimal_places=2,max_digits=10)
   college=models.ForeignKey(college, on_delete=models.CASCADE,default=1)
-  description=models.CharField(max_length=100,default='',blank=True,null=True)
+  department = models.CharField(max_length=100)
+  description=models.CharField(max_length=500,default='',blank=True,null=True)
   image=models.ImageField(upload_to='uploads/product/')
 
   def __str__(self):
@@ -44,5 +46,5 @@ class order(models.Model):
    date=models.DateField(default=datetime.datetime.today)
    status=models.BooleanField(default=False)
 
-def __str__(self):
-    return self.product
+   def __str__(self):
+    return self.product.name

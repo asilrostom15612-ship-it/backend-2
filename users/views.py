@@ -8,8 +8,8 @@ from django.contrib import messages
 # singin 
 def signin_user (request):
     if request.method == "POST":
-       email=request.POST['email']
-       password=request.POST['password']
+       email=request.POST.get('email')
+       password=request.POST.get('password')
        try:
             user_obj = User.objects.get(email=email)
             username = user_obj.username  
@@ -36,9 +36,20 @@ def logout_user (request):
 # signup
 def signup_user(request):
     if request.method == "POST":
-       username = request.POST['username']
-       email=request.POST['email']
-       password=request.POST['password']
+       username = request.POST.get('username')
+       email=request.POST.get('email')
+       password=request.POST.get('password')
+
+       
+       if not username:
+           username = email
+
+      
+       if not username or not password:
+          messages.error(request, "Username and password are required.")
+          return redirect('signin')
+
+
        if User.objects.filter(email=email).exists():
           messages.error(request, ("Your Email already exists."))
           return redirect ('signin')
